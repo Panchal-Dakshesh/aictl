@@ -1,0 +1,3 @@
+{"id": "33333333-cccc-4ddd-8eee-000000000003", "timestamp": "2025-05-01T08:00:00.000Z", "instructions": ""}
+{"type": "message", "role": "user", "content": [{"type": "input_text", "text": "explain this regex"}]}
+{"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "It matches ISO dates."}]}

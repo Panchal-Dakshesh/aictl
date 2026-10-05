@@ -1,0 +1,4 @@
+/dist/
+/aictl
+*.test
+.DS_Store

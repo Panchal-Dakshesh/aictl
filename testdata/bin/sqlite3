@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+# Minimal stand-in for `sqlite3 -readonly -json <db> <query>` so tests run
+# on machines without the sqlite3 CLI. macOS ships the real one.
+import json, sqlite3, sys
+args = [a for a in sys.argv[1:] if not a.startswith("-")]
+db, q = args[0], args[1]
+c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+cur = c.execute(q)
+cols = [d[0] for d in cur.description or []]
+rows = [dict(zip(cols, [v.decode() if isinstance(v, bytes) else v for v in r])) for r in cur.fetchall()]
+if rows: print(json.dumps(rows))
